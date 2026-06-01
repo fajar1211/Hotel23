@@ -80,11 +80,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "VVIP Residence Singkawang — Art Deco Luxury Hotel" },
       { name: "description", content: "Ultra premium Art Deco hotel in Singkawang. Suites, ballroom, speakeasy, spa — 1920s Gatsby glamour." },
       { name: "author", content: "VVIP Residence" },
-      { property: "og:title", content: "VVIP Residence Singkawang" },
-      { property: "og:description", content: "Ultra premium Art Deco hotel — 1920s Gatsby glamour in Singkawang." },
+      { property: "og:title", content: "VVIP Residence Singkawang — Art Deco Luxury Hotel" },
+      { property: "og:description", content: "Ultra premium Art Deco hotel in Singkawang. Suites, ballroom, speakeasy, spa — 1920s Gatsby glamour." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "VVIP Residence Singkawang — Art Deco Luxury Hotel" },
+      { name: "twitter:description", content: "Ultra premium Art Deco hotel in Singkawang. Suites, ballroom, speakeasy, spa — 1920s Gatsby glamour." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/be8c02fa-0b27-4847-ba56-86471d5aee39/id-preview-25974bbd--a6e2562a-aefb-458c-bd63-83c163a51fad.lovable.app-1780285295519.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/be8c02fa-0b27-4847-ba56-86471d5aee39/id-preview-25974bbd--a6e2562a-aefb-458c-bd63-83c163a51fad.lovable.app-1780285295519.png" },
     ],
     links: [
       {
