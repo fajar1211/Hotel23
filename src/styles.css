@@ -4,6 +4,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================================
+ * VVIP Residence Singkawang — Art Deco Design System
+ * 1920s Gatsby glamour: black, gold, deep red, cream marble
+ * ============================================================ */
+
 /*
  * Design system definition.
  *
@@ -62,26 +67,44 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --radius: 0.125rem;
+  /* Core palette */
+  --background: oklch(0.08 0.005 60);            /* near-black */
+  --foreground: oklch(0.92 0.02 80);             /* cream */
+  --card: oklch(0.11 0.008 60);
+  --card-foreground: oklch(0.92 0.02 80);
+  --popover: oklch(0.11 0.008 60);
+  --popover-foreground: oklch(0.92 0.02 80);
+  --primary: oklch(0.78 0.13 85);                /* gold #C5A85E */
+  --primary-foreground: oklch(0.08 0.005 60);
+  --secondary: oklch(0.18 0.01 60);
+  --secondary-foreground: oklch(0.92 0.02 80);
+  --muted: oklch(0.15 0.01 60);
+  --muted-foreground: oklch(0.65 0.02 80);
+  --accent: oklch(0.38 0.14 25);                 /* deep velvet red */
+  --accent-foreground: oklch(0.95 0.02 80);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.95 0.02 80);
+  --border: oklch(0.78 0.13 85 / 0.25);
+  --input: oklch(0.78 0.13 85 / 0.35);
+  --ring: oklch(0.78 0.13 85);
+
+  /* Brand tokens */
+  --gold: oklch(0.78 0.13 85);
+  --gold-bright: oklch(0.88 0.15 85);
+  --gold-deep: oklch(0.55 0.11 75);
+  --noir: oklch(0.05 0.003 60);
+  --velvet: oklch(0.32 0.14 25);
+  --cream: oklch(0.94 0.025 80);
+
+  --font-display: "Cinzel Decorative", serif;
+  --font-body: "Playfair Display", Georgia, serif;
+  --font-mono: "Special Elite", "Courier New", monospace;
+
+  --gradient-gold: linear-gradient(135deg, oklch(0.55 0.11 75) 0%, oklch(0.88 0.15 85) 50%, oklch(0.55 0.11 75) 100%);
+  --gradient-noir: linear-gradient(180deg, oklch(0.08 0.005 60) 0%, oklch(0.05 0.003 60) 100%);
+  --shadow-gold: 0 10px 40px -10px oklch(0.78 0.13 85 / 0.4);
+  --shadow-deep: 0 25px 60px -20px oklch(0 0 0 / 0.8);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +163,292 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    background-image:
+      radial-gradient(ellipse at top, oklch(0.13 0.01 60) 0%, transparent 60%),
+      radial-gradient(ellipse at bottom, oklch(0.1 0.008 25) 0%, transparent 60%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+  }
+}
+
+/* ============================================================
+ * Art Deco utilities
+ * ============================================================ */
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-body    { font-family: var(--font-body); }
+  .font-mono    { font-family: var(--font-mono); }
+
+  .text-gold        { color: var(--gold); }
+  .text-gold-bright { color: var(--gold-bright); }
+  .text-velvet      { color: var(--velvet); }
+  .text-cream       { color: var(--cream); }
+  .bg-noir          { background-color: var(--noir); }
+  .bg-velvet        { background-color: var(--velvet); }
+  .border-gold      { border-color: var(--gold); }
+
+  /* Gold shimmer text */
+  .gold-shimmer {
+    background: linear-gradient(
+      100deg,
+      oklch(0.55 0.11 75) 0%,
+      oklch(0.78 0.13 85) 30%,
+      oklch(0.95 0.16 85) 50%,
+      oklch(0.78 0.13 85) 70%,
+      oklch(0.55 0.11 75) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  /* Chevron marble floor */
+  .chevron-marble {
+    background-image:
+      linear-gradient(135deg, oklch(0.1 0.005 60) 25%, transparent 25%),
+      linear-gradient(225deg, oklch(0.1 0.005 60) 25%, transparent 25%),
+      linear-gradient(45deg,  oklch(0.1 0.005 60) 25%, transparent 25%),
+      linear-gradient(315deg, oklch(0.92 0.02 80) 25%, oklch(0.08 0.005 60) 25%);
+    background-position: 20px 0, 20px 0, 0 0, 0 0;
+    background-size: 40px 40px;
+  }
+
+  /* Art Deco border frame */
+  .deco-frame {
+    position: relative;
+    border: 1px solid var(--gold);
+    box-shadow:
+      inset 0 0 0 4px var(--noir),
+      inset 0 0 0 5px var(--gold),
+      var(--shadow-deep);
+  }
+  .deco-frame::before,
+  .deco-frame::after {
+    content: "";
+    position: absolute;
+    width: 30px; height: 30px;
+    border: 2px solid var(--gold);
+  }
+  .deco-frame::before {
+    top: -6px; left: -6px;
+    border-right: none; border-bottom: none;
+  }
+  .deco-frame::after {
+    bottom: -6px; right: -6px;
+    border-left: none; border-top: none;
+  }
+
+  /* Geometric gold divider — sunburst/fan */
+  .deco-divider {
+    height: 28px;
+    background:
+      radial-gradient(circle at 50% 100%, var(--gold) 0 2px, transparent 3px),
+      linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+    background-repeat: no-repeat;
+    background-size: 100% 1px, 100% 1px;
+    background-position: center 14px, center 18px;
+    position: relative;
+  }
+  .deco-divider::before {
+    content: "◆";
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -55%);
+    color: var(--gold);
+    background: var(--background);
+    padding: 0 12px;
+    font-size: 14px;
+  }
+
+  /* Chevron animated stripe (suite cards) */
+  .chevron-anim {
+    background-image: repeating-linear-gradient(
+      135deg,
+      var(--gold) 0 1px,
+      transparent 1px 10px
+    );
+    background-size: 14px 14px;
+    animation: chevron-shift 6s linear infinite;
+  }
+  @keyframes chevron-shift {
+    0%   { background-position: 0 0; }
+    100% { background-position: 28px 0; }
+  }
+
+  /* Crystal chandelier sway */
+  .chandelier-sway {
+    transform-origin: top center;
+    animation: sway 6s ease-in-out infinite;
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-1.2deg); }
+    50%      { transform: rotate(1.2deg); }
+  }
+
+  /* Crystal glow */
+  .crystal-glow {
+    filter: drop-shadow(0 0 24px oklch(0.88 0.15 85 / 0.6))
+            drop-shadow(0 0 48px oklch(0.78 0.13 85 / 0.35));
+    animation: crystal-pulse 3s ease-in-out infinite;
+  }
+  @keyframes crystal-pulse {
+    0%, 100% { opacity: 0.85; }
+    50%      { opacity: 1; }
+  }
+
+  /* Art Deco fan that opens on hover */
+  .deco-fan {
+    transform-origin: bottom center;
+    transform: scale(0.85) rotate(-2deg);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    animation: fan-breathe 5s ease-in-out infinite;
+  }
+  .group:hover .deco-fan {
+    transform: scale(1.15) rotate(0deg);
+    animation: none;
+  }
+  @keyframes fan-breathe {
+    0%, 100% { transform: scale(0.85) rotate(-2deg); }
+    50%      { transform: scale(0.92) rotate(2deg); }
+  }
+
+  /* Diamond shimmer (gallery dots) */
+  .diamond-shimmer {
+    width: 14px; height: 14px;
+    background: var(--gradient-gold);
+    transform: rotate(45deg);
+    box-shadow: 0 0 12px var(--gold);
+    animation: diamond-twinkle 2s ease-in-out infinite;
+  }
+  @keyframes diamond-twinkle {
+    0%, 100% { opacity: 0.5; transform: rotate(45deg) scale(0.9); }
+    50%      { opacity: 1; transform: rotate(45deg) scale(1.1); }
+  }
+
+  /* Champagne bubble */
+  .champagne-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, oklch(0.95 0.02 80 / 0.9), oklch(0.78 0.13 85 / 0.2));
+    box-shadow: 0 0 8px oklch(0.88 0.15 85 / 0.6);
+    animation: bubble-rise linear infinite;
+  }
+  @keyframes bubble-rise {
+    0%   { transform: translateY(0) scale(1);   opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(-180px) scale(0.3); opacity: 0; }
+  }
+
+  /* Vintage telephone ring */
+  .phone-ring {
+    animation: phone-ring 2.8s ease-in-out infinite;
+    transform-origin: center;
+  }
+  @keyframes phone-ring {
+    0%, 60%, 100% { transform: rotate(0); }
+    65% { transform: rotate(-12deg); }
+    70% { transform: rotate(12deg); }
+    75% { transform: rotate(-10deg); }
+    80% { transform: rotate(10deg); }
+    85% { transform: rotate(-6deg); }
+    90% { transform: rotate(6deg); }
+    95% { transform: rotate(0); }
+  }
+
+  /* Typewriter caret */
+  .typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--gold);
+    animation: typing 4s steps(40, end), caret 0.8s step-end infinite;
+  }
+  @keyframes typing {
+    from { width: 0; }
+    to   { width: 100%; }
+  }
+  @keyframes caret {
+    from, to { border-color: transparent; }
+    50%      { border-color: var(--gold); }
+  }
+
+  /* Reveal fade-in */
+  .fade-up {
+    animation: fade-up 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Gold shimmer button */
+  .btn-gold {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2.25rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: var(--noir);
+    background: var(--gradient-gold);
+    background-size: 200% auto;
+    border: 1px solid var(--gold-bright);
+    box-shadow: var(--shadow-gold);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.6s ease;
+    overflow: hidden;
+  }
+  .btn-gold::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, transparent 30%, oklch(1 0 0 / 0.5) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.8s ease;
+  }
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    background-position: right center;
+    box-shadow: 0 16px 50px -10px oklch(0.78 0.13 85 / 0.6);
+  }
+  .btn-gold:hover::after { transform: translateX(100%); }
+
+  .btn-outline-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid var(--gold);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .btn-outline-gold:hover {
+    background: var(--gold);
+    color: var(--noir);
+    box-shadow: var(--shadow-gold);
   }
 }
