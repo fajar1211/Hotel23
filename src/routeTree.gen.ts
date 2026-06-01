@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SuitesRouteImport } from './routes/suites'
+import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SuitesRoute = SuitesRouteImport.update({
   id: '/suites',
   path: '/suites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacilitiesRoute = FacilitiesRouteImport.update({
+  id: '/facilities',
+  path: '/facilities',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/facilities': typeof FacilitiesRoute
   '/suites': typeof SuitesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/facilities': typeof FacilitiesRoute
   '/suites': typeof SuitesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/facilities': typeof FacilitiesRoute
   '/suites': typeof SuitesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/suites'
+  fullPaths: '/' | '/facilities' | '/suites'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/suites'
-  id: '__root__' | '/' | '/suites'
+  to: '/' | '/facilities' | '/suites'
+  id: '__root__' | '/' | '/facilities' | '/suites'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FacilitiesRoute: typeof FacilitiesRoute
   SuitesRoute: typeof SuitesRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/suites'
       fullPath: '/suites'
       preLoaderRoute: typeof SuitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/facilities': {
+      id: '/facilities'
+      path: '/facilities'
+      fullPath: '/facilities'
+      preLoaderRoute: typeof FacilitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FacilitiesRoute: FacilitiesRoute,
   SuitesRoute: SuitesRoute,
 }
 export const routeTree = rootRouteImport
